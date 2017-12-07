@@ -4,5 +4,41 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #808080;
+}
+
+nav {
+    background: #DCDCDC;
+}
+
+.container {
+    width: 80%;
+    height: 200px;
+    background: white;
+    margin: 40px;
+    margin-left: 80px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+#icon {
+    width: 25%;
+    height: 200px;
+    background: red;
+    float: left;
+    padding-left: 10px;
+
+}
+#title {
+    font-size: 64px;
+    line-height: 64px;
+    color: white;
+    font-weight: bold;
+}
+#navbar {
+    float: right;
+    margin-top: 12px;
+    margin-right: 20px;
 }
