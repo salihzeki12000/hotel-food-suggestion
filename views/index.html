@@ -18,14 +18,14 @@
                 <div id="icon" class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand" id="title">BBC EAT</a></div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul>
-                    <li class="active"><a href="/">Your Work</a></li>
-                    <li><a href="/insert">Insert a new record</a></li>
-                    <li><a href="/reference">Reference</a></li>
-                    <li><a href="/family">Show Family</a></li>
+                    <li class="active"><a href="/">Find Restaurants Near a Hotel</a></li>
+                    <li><a href="/insert">Check Indencity Index of a Restaurant</a></li>
+                    <li><a href="/reference">Find Attractions Near a Hotel</a></li>
+                    <li><a href="/reference">View Restaurant Customer Comments</a></li>
                     </ul>
                 </div>
-                <div class="g-signin2" style="float:right;" data-onsuccess="onSignIn"></div>
-                <a href="#" onclick="signOut();" style="float:right;">Sign out</a>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <a href="#" onclick="signOut();" id="sign-out">Sign out</a>
                 <script>
                     function signOut() {
                         var auth2 = gapi.auth2.getAuthInstance();
