@@ -1,4 +1,4 @@
-// Created by
+// Created by Hugang Yu on Dec/07/2017
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -21,6 +21,19 @@ var nearByRest = function(name, res){
     });
 }
 
+var qCityHotel = function(name, res){
+    var query = 'select h.Name, h.Zip, h.Address from db550.Hotel h where h.City = "' + name + '"';
+    console.log("Querying qCity: " + query);
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qCityHotel" + rows);
+            res.json(rows);
+        }
+    });
+}
+
 module.exports = {
-    nearByRest
+    nearByRest,
+    qCityHotel
 };

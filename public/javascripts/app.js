@@ -2,8 +2,7 @@ var app = angular.module('angularjsNodejsTutorial',[]);
 app.controller('myController', function($scope, $http)
 {
     $scope.message="";
-    $scope.Submit = function()
-    {
+    $scope.Submit = function() {
         var request = $http.get('/data/'+$scope.email);
         request.success(function(data)
         {
@@ -15,7 +14,20 @@ app.controller('myController', function($scope, $http)
             console.log('err');
         });
     
-    }; 
+    };
+
+    $scope.qCityHotel = function(){
+        var request = $http.get('/qCityHotel/'+$scope.restaurant);
+        request.success(function(data)
+        {
+            alert(data);
+            $scope.data = data;
+        });
+        request.error(function(data)
+        {
+            console.log('err');
+        });
+    }
 });
 
 // To implement "Insert a new record", you need to:
