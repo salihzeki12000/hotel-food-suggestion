@@ -7,6 +7,7 @@ app.controller('myController', function($scope, $http)
         var request = $http.get('/data/'+$scope.email);
         request.success(function(data)
         {
+            alert(data);
             $scope.data = data;
         });
         request.error(function(data)
