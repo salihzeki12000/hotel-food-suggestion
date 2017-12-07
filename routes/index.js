@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+var dbService = require('../DatabaseService/dbService');
 
 // Connect string to MySQL
 var mysql = require('mysql');
@@ -31,21 +32,26 @@ router.get('/family', function(req, res, next) {
 
 router.get('/data/:email', function(req,res) {
   // use console.log() as print() in case you want to debug, example below:
-  // console.log("inside person email");
+
     var email = req.params.email;
+    console.log("inside person email " + email);
     // var query2 = 'SELECT p.*, COUNT(f.friend) as num ' +
     //   'FROM Person p LEFT JOIN Friends f ' +
     //   'ON p.login = f.login ';
     // if (email != 'undefined' && email != ' ') query2 = query2 + 'WHERE p.login ="' + email + '"' ;
     //   query2 = query2 + ' GROUP BY p.login';
-  var query2 = 'select * from Hotel';
-  console.log(query2);
-  connection.query(query2, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-        res.json(rows);
-    }
-    });
+    var name = email;
+    //var query = 'select distinct r.name as nearbyRestaurant, r.address, r.postal_code from yelp_db.business r, db550.Hotel h where r.postal_code = h.Zip and h.Name = "' + name + '"';
+    dbService.nearByRest(name, res);
+    //  var query2 = 'select * from Hotel where Name = "' + email + '"';
+    //  console.log(query2);
+    // connection.query(query2, function(err, rows, fields) {
+    // if (err) console.log(err);
+    // else {
+    //     console.log(rows);
+    //     res.json(rows);
+    // }
+    // });
 });
 
 router.get('/data/', function(req, res)
