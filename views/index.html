@@ -41,10 +41,12 @@
             <!-- Main component for a primary marketing message or call to action-->
             <div class="jumbotron">
          <div ng-controller="myController">
-        <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> Please enter a person login:
-            <input name="email" ng-model="email" value="">
-            <button type="button" ng-click="Submit()" class="button">Show Persons</button>
-        </p>
+             <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> Enter a City Name, query Nearby Hotels
+                 <input name="email" ng-model="email" value="">
+                 <button type="button" ng-click="Submit()" class="button">Nearby Restaurants</button>
+                 <input name="restaurant" ng-model="restaurant" value="">
+                 <button type="button" ng-click="qCityHotel()" class="button">Show Hotels</button>
+             </p>
         <table border="0" cellpadding="10" cellspacing="1" width="500" align="center">
             <tr>
                 <td> Login </td>
@@ -57,9 +59,8 @@
             <td> {{x.nearbyRestaurant}} </td>
             <td> {{x.address}} </td>
             <td> {{x.postal_code}} </td>
-            <!--<td> {{x.Zip}} </td>-->
-            <!--<td> {{x.Address}} </td>-->
-            <!--<td> {{x.num}} </td>-->
+            <td> {{x.Name}} </td>
+            <td> {{x.Zip}} </td>
             </tr>
         </table>
         </div>
