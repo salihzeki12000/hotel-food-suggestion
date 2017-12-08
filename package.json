@@ -12,6 +12,8 @@
     "express": "~4.15.2",
     "jade": "~1.11.0",
     "mongodb": "^3.0.0-rc0",
+    "mongojs": "^2.4.1",
+    "mongoose": "^4.13.6",
     "morgan": "~1.8.1",
     "mysql": "^2.14.1",
     "serve-favicon": "~2.4.2"
