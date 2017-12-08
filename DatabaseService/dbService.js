@@ -44,7 +44,8 @@ var qComment = function(name, res){
       if (err) console.log(err);
       else {
           console.log(rows);
-          id= rows.id;
+          id= rows[0].id;
+          console.log(id);
       }
   });
 
@@ -54,6 +55,7 @@ var qComment = function(name, res){
     var ndb = db.db('test');
     console.log('connedted!');
     var pro = ndb.collection('comments').find({business_id:id});
+    var temp = pro.next();
     setTimeout( () => {
       console.log('Printing results: ');
       // // console.log(result);
@@ -61,7 +63,7 @@ var qComment = function(name, res){
       //   cmts.push(val);
       //   console.log(val);
       // });
-      var temp = pro.next();
+      
       console.log(temp);
       res.json(temp);
     }, 10000);
