@@ -12,28 +12,17 @@ var connection = mysql.createConnection({
   port: '3306'
 });
 
-
-// mongoose.connect('mongodb://localhost:27017/test');
-// var mySchema = mongoose.Schema;
-// // var Comments = mongoose.model('comments', mySchema);
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-//     db.once('open', function callback () {
-//       console.log('Successfully connected!');
-//     });
-// // console.log(db.collection('comments').find({business_id: 'uYHaNptLzDLoV_JZ_MuzUA'}));
-// console.log
-// console.log('end');
-
-
 var MongoClient = require('mongodb').MongoClient;
-var uri = 'mongodb://127.0.0.1:27017/test';
+var uri = 'mongodb://CIS550Project:CIS550ProjectPassword@yelpcomments-shard-00-00-r2vwc.mongodb.net:27017,yelpcomments-shard-00-01-r2vwc.mongodb.net:27017,yelpcomments-shard-00-02-r2vwc.mongodb.net:27017/test?ssl=true&replicaSet=YelpComments-shard-0&authSource=admin';
 MongoClient.connect(uri, function(err, db) {
   // console.log(db);
   var ndb = db.db('test');
   console.log('connedted!');
-  var result = ndb.collection('comments').find({business_id: "uYHaNptLzDLoV_JZ_MuzUA"});
-  console.log(result.next());
+  var result = ndb.collection('comments').find({business_id:"-4awmS8e1IYuVbv60Ebh7Q"});
+  var temp = result.next();
+  setTimeout( () => {
+    console.log(temp);
+  }, 10000);
   console.log('ended!');
   db.close();
 });
