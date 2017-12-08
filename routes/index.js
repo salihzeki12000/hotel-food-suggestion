@@ -13,6 +13,8 @@ var connection = mysql.createConnection({
   port: '3306'
 });
 
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
