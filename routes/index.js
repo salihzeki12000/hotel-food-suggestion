@@ -56,22 +56,10 @@ router.get('/family', function(req, res, next) {
 });
 
 router.get('/data/:email', function(req,res) {
-  // use console.log() as print() in case you want to debug, example below:
-  // console.log("inside person email");
+
     var email = req.params.email;
-    // var query2 = 'SELECT p.*, COUNT(f.friend) as num ' +
-    //   'FROM Person p LEFT JOIN Friends f ' +
-    //   'ON p.login = f.login ';
-    // if (email != 'undefined' && email != ' ') query2 = query2 + 'WHERE p.login ="' + email + '"' ;
-    //   query2 = query2 + ' GROUP BY p.login';
-  var query2 = 'select * from Hotel';
-  console.log(query2);
-  connection.query(query2, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-        res.json(rows);
-    }
-    });
+    var name = email;
+    dbService.nearByRest(name, res);
 });
 
 router.get('/data/', function(req, res)
@@ -88,6 +76,11 @@ router.get('/data/', function(req, res)
             res.json(rows);
         }
     });
+});
+
+router.get('/qCityHotel/:name',function(req,res) {
+    var cityName = req.params.name;
+    dbService.qCityHotel(cityName, res);
 });
 
 // ----Your implemention of route handler for "Insert a new record" should go here-----
