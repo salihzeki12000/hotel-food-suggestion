@@ -9,6 +9,17 @@ var connection = mysql.createConnection({
     port: '3306'
 });
 
+var checkComment = function(name, res){
+    var query = 'select distinct r.name as nearbyRestaurant, r.address, r.postal_code from yelp_db.business r, db550.Hotel h where r.postal_code = h.Zip and h.Name = "' + name + '"';
+    connection.query(query, function(err, rows, fields) {
+                     if (err) console.log(err);
+                     else {
+                     console.log(rows);
+                     res.json(rows);
+                     }
+                     });
+}
+
 var nearByRest = function(name, res){
     var query = 'select distinct r.name as nearbyRestaurant, r.address, r.postal_code from yelp_db.business r, db550.Hotel h where r.postal_code = h.Zip and h.Name = "' + name + '"';
     connection.query(query, function(err, rows, fields) {

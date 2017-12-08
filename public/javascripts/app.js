@@ -6,6 +6,7 @@ app.controller('myController', function($scope, $http)
         var request = $http.get('/data/'+$scope.hotelName);
         request.success(function(data)
         {
+            
             $scope.data = data;
         });
         request.error(function(data)

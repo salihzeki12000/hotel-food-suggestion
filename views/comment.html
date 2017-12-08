@@ -42,12 +42,9 @@
             <div class="jumbotron">
          <div ng-controller="myController">
              <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> <br/>
-                 <a id="query"> Find Hotels In a City: </a>
-                 <input name="cityName" ng-model="cityName" value="">
-                 <button id="queryButton" type="button" ng-click="qCityHotel()" class="button">Show Hotels</button> <br/>
-                 <a id="query"> Find Restaurants Near a Hotel: </a>
-                 <input name="hotelName" ng-model="hotelName" value="">
-                 <button id="queryButton" type="button" ng-click="qResNear()" class="button">Show Restaurants</button>
+                 <a id="query"> Find a Restautant's Comments: </a>
+                 <input name="restaurantName" ng-model="crestaurantName" value="">
+                 <button id="queryButton" type="button" ng-click="qComment()" class="button">Show Comments</button> <br/>
              </p>
         <table border="0" cellpadding="10" cellspacing="1" width="500" align="center">
             <tr>
