@@ -13,6 +13,23 @@ var connection = mysql.createConnection({
   port: '3306'
 });
 
+var MongoClient = require('mongodb').MongoClient;
+var uri = 'mongodb://CIS550Project:CIS550ProjectPassword@yelpcomments-shard-00-00-r2vwc.mongodb.net:27017,yelpcomments-shard-00-01-r2vwc.mongodb.net:27017,yelpcomments-shard-00-02-r2vwc.mongodb.net:27017/test?ssl=true&replicaSet=YelpComments-shard-0&authSource=admin';
+MongoClient.connect(uri, function(err, db) {
+  // console.log(db);
+  var ndb = db.db('test');
+  console.log('connedted!');
+  var pro = ndb.collection('comments').find({business_id:"-4awmS8e1IYuVbv60Ebh7Q"});
+  setTimeout( () => {
+    console.log('Printing results: ');
+    // console.log(result);
+    pro.forEach(function(val){
+      console.log(val);
+    });
+  }, 10000);
+  console.log('ended!');
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
