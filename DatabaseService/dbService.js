@@ -50,19 +50,20 @@ var qComment = function(name, res){
 
   MongoClient.connect(uri, function(err, db) {
     // console.log(db);
-    var cmts = [];
+
     var ndb = db.db('test');
     console.log('connedted!');
     var pro = ndb.collection('comments').find({business_id:id});
     setTimeout( () => {
       console.log('Printing results: ');
-      // console.log(result);
-      pro.forEach(function(val){
-        cmts.push(val);
-        console.log(val);
-      });
-
-      res.json(cmts);
+      // // console.log(result);
+      // pro.forEach(function(val){
+      //   cmts.push(val);
+      //   console.log(val);
+      // });
+      var temp = pro.next();
+      console.log(temp);
+      res.json(temp);
     }, 10000);
     console.log('ended!');
   });
