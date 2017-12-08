@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-
+var mongoose = require('mongoose');
 // Connect string to MySQL
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -10,6 +10,32 @@ var connection = mysql.createConnection({
 	password: 'db550password',
   database: 'db550',
   port: '3306'
+});
+
+
+// mongoose.connect('mongodb://localhost:27017/test');
+// var mySchema = mongoose.Schema;
+// // var Comments = mongoose.model('comments', mySchema);
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+//     db.once('open', function callback () {
+//       console.log('Successfully connected!');
+//     });
+// // console.log(db.collection('comments').find({business_id: 'uYHaNptLzDLoV_JZ_MuzUA'}));
+// console.log
+// console.log('end');
+
+
+var MongoClient = require('mongodb').MongoClient;
+var uri = 'mongodb://127.0.0.1:27017/test';
+MongoClient.connect(uri, function(err, db) {
+  // console.log(db);
+  var ndb = db.db('test');
+  console.log('connedted!');
+  var result = ndb.collection('comments').find({business_id: "uYHaNptLzDLoV_JZ_MuzUA"});
+  console.log(result.next());
+  console.log('ended!');
+  db.close();
 });
 
 /* GET home page. */
