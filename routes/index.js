@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var dbService = require('../DatabaseService/dbService');
-
+var mongoose = require('mongoose');
 // Connect string to MySQL
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -11,6 +10,48 @@ var connection = mysql.createConnection({
 	password: 'db550password',
   database: 'db550',
   port: '3306'
+});
+
+var MongoClient = require('mongodb').MongoClient;
+var uri = 'mongodb://CIS550Project:CIS550ProjectPassword@yelpcomments-shard-00-00-r2vwc.mongodb.net:27017,yelpcomments-shard-00-01-r2vwc.mongodb.net:27017,yelpcomments-shard-00-02-r2vwc.mongodb.net:27017/test?ssl=true&replicaSet=YelpComments-shard-0&authSource=admin';
+
+
+// var queryToReturn = function () {
+//   return new Promise(function(resolve, reject){
+//     MongoClient.connect(uri, function(err, db) {
+//       var test = db.db('test');
+//       var results = db.collection('comments').find({business_id:"-4awmS8e1IYuVbv60Ebh7Q"});
+//       return results.toArray();
+//     }).then(function(items){
+//       console.log(items);
+//     });
+//   });
+// };
+//
+// queryToReturn;
+
+var MongoClient = require('mongodb').MongoClient;
+var uri = 'mongodb://CIS550Project:CIS550ProjectPassword@yelpcomments-shard-00-00-r2vwc.mongodb.net:27017,yelpcomments-shard-00-01-r2vwc.mongodb.net:27017,yelpcomments-shard-00-02-r2vwc.mongodb.net:27017/test?ssl=true&replicaSet=YelpComments-shard-0&authSource=admin';
+MongoClient.connect(uri, function(err, db) {
+  // console.log(db);
+  var ndb = db.db('test');
+  console.log('connedted!');
+  var pro = ndb.collection('comments').find({business_id:"-4awmS8e1IYuVbv60Ebh7Q"});
+  // var result = [];
+  // while (pro.hasNext()){
+  //   var temp = pro.next();
+  //   console.log(temp);
+  //   result.push(temp);
+  // }
+  setTimeout( () => {
+    console.log('Printing results: ');
+    // console.log(result);
+    pro.forEach(function(val){
+      console.log(val);
+    });
+  }, 10000);
+  console.log('ended!');
+  // db.close();
 });
 
 /* GET home page. */
