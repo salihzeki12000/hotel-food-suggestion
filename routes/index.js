@@ -39,7 +39,7 @@ router.get('/data/:hotelName', function(req,res) {
 });
 
 router.get('/qComment/:name', function(req,res) {
-    var rsName = req.params.name;
+    var resName = req.params.name;
     dbService.qComment(resName, res);
 });
 
