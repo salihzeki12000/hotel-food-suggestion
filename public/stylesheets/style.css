@@ -42,6 +42,15 @@ li {
     padding-right: 10px;
 }
 
+#query {
+    color: black;
+    font-size: 18px;
+}
+
+#queryButton {
+    font-size: 18px;
+}
+
 #icon {
     width: 25%;
     height: 200px;

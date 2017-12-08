@@ -18,8 +18,8 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
 });
 
-router.get('/reference', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../', 'views', 'reference.html'));
+router.get('/comment', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'comment.html'));
 });
 
 router.get('/insert', function(req, res, next) {
@@ -30,13 +30,13 @@ router.get('/family', function(req, res, next) {
     res.sendFile(path.join(__dirname, '../', 'views', 'family.html'));
 });
 
-router.get('/data/:email', function(req,res) {
+router.get('/data/:hotelName', function(req,res) {
 
-    var email = req.params.email;
-    var name = email;
-    dbService.nearByRest(name, res);
+    var hotelName = req.params.hotelName;
+    dbService.nearByRest(hotelName, res);
 });
 
+/*
 router.get('/data/', function(req, res)
 {
     var query2 = 'SELECT p.*, COUNT(f.friend) as num ' +
@@ -52,6 +52,7 @@ router.get('/data/', function(req, res)
         }
     });
 });
+ */
 
 router.get('/qCityHotel/:name',function(req,res) {
     var cityName = req.params.name;

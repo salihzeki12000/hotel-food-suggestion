@@ -2,11 +2,10 @@ var app = angular.module('angularjsNodejsTutorial',[]);
 app.controller('myController', function($scope, $http)
 {
     $scope.message="";
-    $scope.Submit = function() {
-        var request = $http.get('/data/'+$scope.email);
+    $scope.qResNear = function() {
+        var request = $http.get('/data/'+$scope.hotelName);
         request.success(function(data)
         {
-            alert(data);
             $scope.data = data;
         });
         request.error(function(data)
@@ -17,10 +16,9 @@ app.controller('myController', function($scope, $http)
     };
 
     $scope.qCityHotel = function(){
-        var request = $http.get('/qCityHotel/'+$scope.restaurant);
+        var request = $http.get('/qCityHotel/'+$scope.cityName);
         request.success(function(data)
         {
-            alert(data);
             $scope.data = data;
         });
         request.error(function(data)
