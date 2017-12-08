@@ -38,6 +38,11 @@ router.get('/data/:hotelName', function(req,res) {
     dbService.nearByRest(hotelName, res);
 });
 
+router.get('/qComment/:name', function(req,res) {
+    var rsName = req.params.name;
+    dbService.qComment(resName, res);
+});
+
 /*
 router.get('/data/', function(req, res)
 {
