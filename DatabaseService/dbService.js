@@ -68,7 +68,7 @@ var qComment = function(name, res){
       // });
       pro.toArray(function(err, result){
         if (err) throw err;
-        console.log(result);
+        console.log(result.length);
         res.json(result);
       });
       // res.json(temp);

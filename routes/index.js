@@ -15,36 +15,36 @@ var connection = mysql.createConnection({
   port: '3306'
 });
 
-MongoClient.connect(uri, function(err, db) {
-  // console.log(db);
-
-  var ndb = db.db('test');
-  console.log('connedted!');
-  var pro = ndb.collection('comments').find({business_id:"uYHaNptLzDLoV_JZ_MuzUA"});
-  //ndb.collection('comments').find({business_id:id}).toArray(function(err, res){
-
-  // });
-  // var temp = pro.next();
-  setTimeout( () => {
-    console.log('Printing results: ');
-    // // console.log(result);
-    // pro.forEach(function(val){
-    //   cmts.push(val);
-    //   console.log(val);
-    // });
-    pro.toArray(function(err, result){
-      if (err) throw err;
-      console.log(result);
-    });
-
-    console.log('Ending');
-    // console.log(typeof(temp));
-    // res.json(temp);
-  }, 10000);
-  console.log('ended!');
-});
-
-
+// MongoClient.connect(uri, function(err, db) {
+//   // console.log(db);
+//
+//   var ndb = db.db('test');
+//   console.log('connedted!');
+//   var pro = ndb.collection('comments').find({business_id:"uYHaNptLzDLoV_JZ_MuzUA"});
+//   //ndb.collection('comments').find({business_id:id}).toArray(function(err, res){
+//
+//   // });
+//   // var temp = pro.next();
+//   setTimeout( () => {
+//     console.log('Printing results: ');
+//     // // console.log(result);
+//     // pro.forEach(function(val){
+//     //   cmts.push(val);
+//     //   console.log(val);
+//     // });
+//     pro.toArray(function(err, result){
+//       if (err) throw err;
+//       console.log(result);
+//     });
+//
+//     console.log('Ending');
+//     // console.log(typeof(temp));
+//     // res.json(temp);
+//   }, 10000);
+//   console.log('ended!');
+// });
+//
+//
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
@@ -68,8 +68,8 @@ router.get('/data/:hotelName', function(req,res) {
     dbService.nearByRest(hotelName, res);
 });
 
-router.get('/qComment/:name', function(req,res) {
-    var resName = req.params.name;
+router.post('/qComment/', function(req,res) {
+    var resName = req.body.resName;
     dbService.qComment(resName, res);
 });
 
