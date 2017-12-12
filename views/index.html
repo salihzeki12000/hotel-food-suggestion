@@ -43,7 +43,7 @@
             <div class="jumbotron">
          <div ng-controller="myController">
              <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> <br/>
-                 <a id="query"> Find Hotels In a City: </a>
+                 <label id="query"> Find Hotels In a City: </label>
                  <input id="input1" name="cityName" ng-model="cityName" value="">
                  <button id="queryButton" type="button" onclick="showHotels();" class="button">Show Hotels</button> <br/>
                  <script>
@@ -56,7 +56,7 @@
                         angular.element(document.getElementById('input1')).scope().qCityHotel();
                     }
                  </script>
-                 <a id="query"> Find Restaurants Near a Hotel: </a>
+                 <label id="query"> Find Restaurants Near a Hotel: </label>
                  <input id="input2" name="hotelName" ng-model="hotelName" value="">
                  <button id="queryButton" type="button" onclick="showRests();" class="button">Show Restaurants</button>
                  <script>
