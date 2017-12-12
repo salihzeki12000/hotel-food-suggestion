@@ -30,8 +30,8 @@
                     function signOut() {
                         var auth2 = gapi.auth2.getAuthInstance();
                         auth2.signOut().then(function () {
-                                             console.log('User signed out.');
-                                             });
+                            console.log('User signed out.');
+                        });
                     }
                 </script>
             </section>
@@ -43,10 +43,22 @@
          <div ng-controller="myController">
              <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> <br/>
                  <a id="query"> Find a Restautant's Comments: </a>
-                 <input name="resName" ng-model="resName" value="">
-                 <button id="queryButton" type="button" ng-click="qComment()" class="button">Show Comments</button> <br/>
+                 <input id="input" name="resName" ng-model="resName" value="">
+                 <button id="queryButton" type="button" onclick="showComment();" class="button">Show Comments</button> <br/>
+                 <script>
+                    function showComment() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        if (auth2.isSignedIn.get()) {
+                          console.log("logged in");
+                          angular.element(document.getElementById('input')).scope().qComment();
+                        } else {
+                          console.log("not logged in");
+                          alert("Please sign in to view the comments.");
+                        }
+                    }
+                </script>
              </p>
-        <table border="0" cellpadding="10" cellspacing="10" width="80%" align="center">
+        <table border="1" cellpadding="10" cellspacing="10" width="80%" align="center">
             <tr>
             <tr ng-repeat="x in data">
             <td> {{x.text}} </td>
