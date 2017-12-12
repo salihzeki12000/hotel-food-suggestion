@@ -44,14 +44,39 @@
          <div ng-controller="myController">
              <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> <br/>
                  <a id="query"> Find Hotels In a City: </a>
-                 <input name="cityName" ng-model="cityName" value="">
-                 <button id="queryButton" type="button" ng-click="qCityHotel()" class="button">Show Hotels</button> <br/>
+                 <input id="input1" name="cityName" ng-model="cityName" value="">
+                 <button id="queryButton" type="button" onclick="showHotels();" class="button">Show Hotels</button> <br/>
+                 <script>
+                    function showHotels() {
+                        document.getElementById('col1_key').innerHTML = "";
+                        document.getElementById('col2_key').innerHTML = "";
+                        document.getElementById('col3_key').innerHTML = "";
+                        document.getElementById('col4_key').innerHTML = "Hotels";
+                        document.getElementById('col5_key').innerHTML = "Zip";
+                        angular.element(document.getElementById('input1')).scope().qCityHotel();
+                    }
+                 </script>
                  <a id="query"> Find Restaurants Near a Hotel: </a>
-                 <input name="hotelName" ng-model="hotelName" value="">
-                 <button id="queryButton" type="button" ng-click="qResNear()" class="button">Show Restaurants</button>
+                 <input id="input2" name="hotelName" ng-model="hotelName" value="">
+                 <button id="queryButton" type="button" onclick="showRests();" class="button">Show Restaurants</button>
+                 <script>
+                    function showRests() {
+                        document.getElementById('col1_key').innerHTML = "Restaurants";
+                        document.getElementById('col2_key').innerHTML = "Address";
+                        document.getElementById('col3_key').innerHTML = "Zip";
+                        document.getElementById('col4_key').innerHTML = "";
+                        document.getElementById('col5_key').innerHTML = "";
+                        angular.element(document.getElementById('input2')).scope().qResNear();
+                    }
+                 </script>
              </p>
         <table border="0" cellpadding="10" cellspacing="1" width="500" align="center">
             <tr>
+                <td id="col1_key"> </td>
+                <td id="col2_key"> </td>
+                <td id="col3_key"> </td>
+                <td id="col4_key"> </td>
+                <td id="col5_key"> </td>
             <tr ng-repeat="x in data">
             <td> {{x.nearbyRestaurant}} </td>
             <td> {{x.address}} </td>
