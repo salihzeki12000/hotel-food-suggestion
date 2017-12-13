@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="angularjsNodejsTutorial">
     <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
         <title>Eat & Chill</title>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="171822122274-onse4r15fpj0u7r2fqb3rklpop9u2kek.apps.googleusercontent.com">
@@ -35,32 +41,37 @@
   			       <div class="status-mes"></div>
   		    </div>
   	  </div>
-
-      <section id="home" class="module-image js-height-full" style="height: 1033px;">
+      <section id="home" class="module-image js-height-full" style="height: 100%;width: 100%;">
           <div class="intro">
              <!-- <div class="hello">Hello, my name is</div> -->
-                <h1 style="font-size:58px;">Eat & Chill</h1>
+                <h1 style="font-size:52px;">Eat & Chill</h1>
+                <!-- <h1 style="font-size:52px;">&</h1>
+                <h1 style="font-size:52px;">Chill</h1> -->
+                <div style="margin-left: auto; margin-top: 3%;">
+                <p><h2><a href="/hotel_res" id="hero_entry">Find Restaurants Near a Hotel</a></h2></p>
+                <p><h2><a href="#" id="hero_entry">Check Indencity Index of a Restaurant</a></h2></p>
+                <p><h2><a href="#" id="hero_entry">Find Attractions Near a Hotel</a></h2></p>
+                <p><h2><a href="/comment" id="hero_entry">View Restaurant Customer Comments</a><h2></p>
+                </div>
                    <!-- <div style="font-size:32px;">&</div>
                 <h1 style="font-size:58px;">Chill</h1> -->
                 <!-- <div class="who-creates">creating modern and impactful design for Web and Mobile</div> -->
           </div>
 
-          <div class="mouse-icon">
+          <!-- <div class="mouse-icon">
             <div class="wheel"></div>
-          </div>
+          </div> -->
       </section>
     </body>
 
-    <body data-spy="scroll" data-target=".scrollspy">
-
         <!-- Static navbar-->
-        <nav role="navigation" class="navbar navbar-static-top navbar-default">
-          <a href="https://cse.google.com/cse/publicurl?cx=008825110005974707753:qolxxahecme">Search Engine</a>
-            <section class="container">
+        <!-- <nav role="navigation" class="navbar navbar-static-top navbar-default"> -->
+
+            <!-- <section class="container">
                 <div id="icon" class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand" id="title">EAT <br/> & <br/> CHILL</a></div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul>
-                    <li class="active"><a href="/">Find Restaurants Near a Hotel</a></li>
+                    <li><a href="/hotel_res">Find Restaurants Near a Hotel</a></li>
                     <li><a href="/insert">Check Indencity Index of a Restaurant</a></li>
                     <li><a href="/reference">Find Attractions Near a Hotel</a></li>
                     <li><a href="/comment">View Restaurant Customer Comments</a></li>
@@ -76,57 +87,9 @@
                                              });
                     }
                 </script>
-            </section>
+            </section> -->
 
-        </nav>
-         <div class="container">
-            <!-- Main component for a primary marketing message or call to action-->
-            <div class="jumbotron">
-         <div ng-controller="myController">
-             <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> <br/>
-                 <label id="query"> Find Hotels In a City: </label>
-                 <input id="input1" name="cityName" ng-model="cityName" value="">
-                 <button id="queryButton" type="button" onclick="showHotels();" class="button">Show Hotels</button> <br/>
-                 <script>
-                    function showHotels() {
-                        document.getElementById('col1_key').innerHTML = "";
-                        document.getElementById('col2_key').innerHTML = "";
-                        document.getElementById('col3_key').innerHTML = "";
-                        document.getElementById('col4_key').innerHTML = "Hotels";
-                        document.getElementById('col5_key').innerHTML = "Zip";
-                        angular.element(document.getElementById('input1')).scope().qCityHotel();
-                    }
-                 </script>
-                 <label id="query"> Find Restaurants Near a Hotel: </label>
-                 <input id="input2" name="hotelName" ng-model="hotelName" value="">
-                 <button id="queryButton" type="button" onclick="showRests();" class="button">Show Restaurants</button>
-                 <script>
-                    function showRests() {
-                        document.getElementById('col1_key').innerHTML = "Restaurants";
-                        document.getElementById('col2_key').innerHTML = "Address";
-                        document.getElementById('col3_key').innerHTML = "Zip";
-                        document.getElementById('col4_key').innerHTML = "";
-                        document.getElementById('col5_key').innerHTML = "";
-                        angular.element(document.getElementById('input2')).scope().qResNear();
-                    }
-                 </script>
-             </p>
-        <table border="0" cellpadding="10" cellspacing="1" width="500" align="center">
-            <tr>
-                <td id="col1_key"> </td>
-                <td id="col2_key"> </td>
-                <td id="col3_key"> </td>
-                <td id="col4_key"> </td>
-                <td id="col5_key"> </td>
-            <tr ng-repeat="x in data">
-            <td> {{x.nearbyRestaurant}} </td>
-            <td> {{x.address}} </td>
-            <td> {{x.postal_code}} </td>
-            <td> {{x.Name}} </td>
-            <td> {{x.Zip}} </td>
-            </tr>
-        </table>
-        </div>
+
         <!-- Javascript files -->
 
         <script src="assets/js/jquery-1.11.1.min.js"></script>

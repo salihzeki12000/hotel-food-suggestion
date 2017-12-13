@@ -50,6 +50,10 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
 });
 
+router.get('/hotel_res', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'hotel_res.html'));
+});
+
 router.get('/comment', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'comment.html'));
 });

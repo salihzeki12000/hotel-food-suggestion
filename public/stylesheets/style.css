@@ -5,11 +5,6 @@ body {
 	color: #666;
 	overflow-x: hidden;
 }
-
-a {
-  color: #808080;
-}
-
 nav {
     background: #DCDCDC;
 }
@@ -41,14 +36,14 @@ input {
 
 .g-signin2 {
     float: right;
-    margin: auto;
+    margin-right: 0;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .container {
     width: 80%;
     height: 200px;
-    background: white;
+
     margin-top: 5px;
     margin-bottom: 40;
     margin-left: auto;
@@ -74,6 +69,8 @@ input {
 }
 
 .navbar {
+  background: url(../images/hero.jpg);
+  background-size: cover;
   margin: auto;
 }
 
@@ -91,6 +88,19 @@ input {
   margin-right: auto;
 }
 
+#hero_entry {
+  color: white;
+}
+
+#hero_entry:hover {
+  text-decoration: none;
+	color: #999;
+}
+
+#nav-entry {
+  color: white;
+  line-height: 24px;
+}
 
 #preloader {
 	background: #FFF;
@@ -104,8 +114,8 @@ input {
 
 #sign-out {
     float: right;
-    margin-right: 1%;
-    margin-top: auto;
+    margin-right: 12%;
+    margin-top: 8px;
     font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
     color: #696969;
 }
@@ -137,7 +147,7 @@ input {
 #icon {
     width: 25%;
     height: 200px;
-    background: #80a4d0;
+    background: #5bc0de;
     float: left;
     padding-left: 3%;
     display: inline-block;
@@ -170,6 +180,7 @@ body {
 	font: 400 18px/1.8 'Open Sans', serif;
 	color: #666;
 	overflow-x: hidden;
+  padding: 0px;
 }
 
 img {
@@ -178,7 +189,7 @@ img {
 }
 
 a {
-	color: #49e2d6;
+	color: #5bc0de;
 }
 
 a:hover {
@@ -235,8 +246,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-	font-size: 30px;
+	font-size: 28px;
 	margin: 0 0 30px;
+}
+
+h2:hover {
+	text-decoration: none;
+	color: #999;
 }
 
 h3 {
@@ -629,7 +645,7 @@ textarea.form-control {
 .intro {
 	position: absolute;
 	width: 100%;
-	top: 50%;
+	top: 45%;
 	left: 0;
 	text-align: center;
 	-webkit-transform: translate(0%, -50%);
@@ -722,9 +738,14 @@ textarea.form-control {
 	padding: 0;
 }
 
-/* ---------------------------------------------- /*
- * Portfolio
-/* ---------------------------------------------- */
+/* Hero List */
+
+.ul {
+  margin: auto;
+  line-height: 20px;
+  color: red;
+}
+
 
 /* Filter */
 
