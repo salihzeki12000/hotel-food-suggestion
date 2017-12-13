@@ -71,6 +71,7 @@ input {
 .navbar {
   background: url(../images/hero.jpg);
   background-size: cover;
+  background-position: 25% 75%;
   margin: auto;
 }
 
@@ -100,6 +101,11 @@ input {
 #nav-entry {
   color: white;
   line-height: 24px;
+}
+
+#nav-entry:hover {
+  text-decoration: none;
+	color: #999;
 }
 
 #preloader {

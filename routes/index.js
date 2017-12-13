@@ -74,7 +74,9 @@ router.get('/data/:hotelName', function(req,res) {
 
 router.post('/qComment/', function(req,res) {
     var resName = req.body.resName;
-    dbService.qComment(resName, res);
+    if(resName != null){
+      dbService.qComment(resName, res);
+    }
 });
 
 /*
