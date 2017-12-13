@@ -1,6 +1,9 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  font: 400 18px/1.8 'Open Sans', serif;
+	color: #666;
+	overflow-x: hidden;
 }
 
 a {
@@ -37,30 +40,99 @@ input {
 }
 
 .g-signin2 {
-    position: absolute;
-    bottom: 70px;
-    right: 145px;
+    float: right;
+    margin: auto;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-#sign-out {
-    position: absolute;
-    bottom: 48px;
-    right: 155px;
-    font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: #696969;
 }
 
 .container {
     width: 80%;
     height: 200px;
     background: white;
-    margin: 40px;
-    margin-left: 100px;
+    margin-top: 5px;
+    margin-bottom: 40;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 10px;
     padding-top: 5px;
     padding-left: 20px;
     padding-right: 10px;
+}
+
+.intro {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	text-align: center;
+	-webkit-transform: translate(0%, -50%);
+	   -moz-transform: translate(0%, -50%);
+		-ms-transform: translate(0%, -50%);
+		 -o-transform: translate(0%, -50%);
+			transform: translate(0%, -50%);
+	padding: 0 15px;
+}
+
+.navbar {
+  margin: auto;
+}
+
+.hello,
+.who-creates {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-style: italic;
+	text-transform: none;
+	margin: 15px 0;
+}
+
+.jumbotron {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#status,
+.status-mes {
+	background-image: url(../images/preloader.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 200px;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	position: absolute;
+	top: 50%;
+	width: 200px;
+}
+
+#preloader {
+	background: #FFF;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 9999;
+}
+
+#sign-out {
+    float: right;
+    margin-right: 1%;
+    margin-top: auto;
+    font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #696969;
+}
+
+
+#home {
+	background: url(../images/hero.jpg);
+	background-color: #222;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+		 -o-background-size: cover;
+			background-size: cover;
+	padding: 0;
 }
 
 #query {
@@ -77,9 +149,9 @@ input {
 #icon {
     width: 25%;
     height: 200px;
-    background: red;
+    background: #80a4d0;
     float: left;
-    padding-left: 15px;
+    padding-left: 3%;
     display: inline-block;
 }
 #title {
@@ -90,7 +162,7 @@ input {
 }
 #navbar {
     float: left;
-    margin-top: 14px;
-    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: auto;
     display: inline-block;
 }
