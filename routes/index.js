@@ -131,7 +131,28 @@ router.get('/qAttraction/:hotel',
     function(req,res) {
         var hotelName = req.params.hotel;
         console.log("qCityHighestHotel: " + hotelName);
-        dbService.qHotelHighestRest(hotelName, res);
+        dbService.qAttraction(hotelName, res);
+    })
+
+router.get('/qCityBestZip/:city',
+    function(req,res) {
+        var cityName = req.params.city;
+        console.log("qCityBestZip: " + cityName);
+        dbService.qCityBestZip(cityName, res);
+    })
+
+router.get('/qZipHotel/:zip',
+    function(req,res) {
+        var zip = req.params.zip;
+        console.log("qZipHotel: " + zip);
+        dbService.qZipHotel(zip, res);
+    })
+
+router.get('/qZipRest/:zip',
+    function(req,res) {
+        var zip = req.params.zip;
+        console.log("qZipRest: " + zip);
+        dbService.qZipRest(zip, res);
     })
 
 
