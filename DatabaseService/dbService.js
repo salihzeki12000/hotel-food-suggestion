@@ -37,6 +37,24 @@ var qCityHotel = function(name, res){
     });
 }
 
+var qCityHighestHotel = function(city, res){
+    var query = 'Select H2.name, H2.Address, convert(averageStar, DECIMAL(5,2))'+
+        'From (Select H.EANHotelID, H.name, R.id, avg(R.stars) as averageStar'+
+        'From db550.Hotel H, yelp_db.business R'+
+        'Where H.Zip =  R.postal_code and  H.city = "'+city+'"'+
+        'Group by H.EANHotelID'+
+        ') as H2'+
+        'order by averageStar DESC'+
+        'limit 10;';
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qCityHighestHotel result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
 var qComment = function(name, res){
   var id = '';
   var query = 'select r.id from yelp_db.business r where r.name = "' + name + '"';
@@ -49,23 +67,7 @@ var qComment = function(name, res){
       }
   });
 
-  var qCityHighestHotel = function(city, res){
-    var query = 'Select H2.name, H2.Address, convert(averageStar, DECIMAL(5,2))'+
-      'From (Select H.EANHotelID, H.name, R.id, avg(R.stars) as averageStar'+
-      'From db550.Hotel H, yelp_db.business R'+
-      'Where H.Zip =  R.postal_code and  H.city = "'+city+'"'+
-      'Group by H.EANHotelID'+
-      ') as H2'+
-      'order by averageStar DESC'+
-      'limit 10;';
-      connection.query(query, function(err, rows, fields) {
-          if (err) console.log(err);
-          else {
-              console.log("qCityHighestHotel result:" + rows);
-              res.json(rows);
-          }
-      });
-  }
+
 
 
   MongoClient.connect(uri, function(err, db) {

@@ -164,7 +164,7 @@ router.get('/qCityHighestHotel/:city',
     function(req,res) {
 
         var cityName = req.params.city;
-        console.log("qCityHighestHotel: " + city);
+        console.log("qCityHighestHotel: " + cityName);
         dbService.qCityHighestHotel(cityName, res);
     })
 
