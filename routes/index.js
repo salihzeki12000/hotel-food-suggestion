@@ -120,7 +120,14 @@ router.get('/qCityHighestHotel/:city',
         dbService.qCityHighestHotel(cityName, res);
     })
 
-router.get('/qHotelHighestResr/:hotel',
+router.get('/qHotelHighestRest/:hotel',
+    function(req,res) {
+        var hotelName = req.params.hotel;
+        console.log("qCityHighestHotel: " + hotelName);
+        dbService.qHotelHighestRest(hotelName, res);
+    })
+
+router.get('/qAttraction/:hotel',
     function(req,res) {
         var hotelName = req.params.hotel;
         console.log("qCityHighestHotel: " + hotelName);
