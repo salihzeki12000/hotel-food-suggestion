@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="angularjsNodejsTutorial">
+    <head>
+        <title>Eat & Chill</title>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="171822122274-onse4r15fpj0u7r2fqb3rklpop9u2kek.apps.googleusercontent.com">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+        <script src="javascripts/app.js" type="text/javascript"></script>
+        <!-- Bootstrap core CSS -->
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- Custom styles for this template-->
+        <link href="stylesheets/style.css" rel="stylesheet">
+        <!-- Font Awesome CSS -->
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
+
+        <!-- Elegant icons CSS -->
+        <link href="assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
+
+        <!-- Magnific-popup lightbox -->
+	      <link href="assets/css/magnific-popup.css" rel="stylesheet">
+
+	      <!-- Owl Carousel -->
+	      <link href="assets/css/owl.theme.css" rel="stylesheet">
+	      <link href="assets/css/owl.carousel.css" rel="stylesheet">
+
+	      <!-- Animate css -->
+	      <link href="assets/css/animate.css" rel="stylesheet">
+
+    </head>
+    <a style="margin-left:12%" href="https://cse.google.com/cse/publicurl?cx=008825110005974707753:qolxxahecme">Search Engine</a>
+    <span href="#" onclick="signOut();" id="sign-out" >Sign out</span>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                                 console.log('User signed out.');
+                                 });
+        }
+    </script>
+    <body data-spy="scroll" data-target=".scrollspy">
+        <!-- Static navbar-->
+        <nav role="navigation" class="navbar navbar-static-top navbar-default">
+            <section class="container">
+                <div href="/" id="icon" class="navbar-header">
+                  <a href="/" class="navbar-brand" id="title">EAT <br/> & <br/> CHILL</a></div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul>
+                    <li><h3><a id="nav-entry" href="/hotel_res">Find Restaurants Near a Hotel</a></li>
+                    <li><h3><a id="nav-entry" href="/topRest">Find the Most Popular Restaurants Near a Hotel</a></li>
+                    <li><h3><a id="nav-entry" href="#">Find Attractions Near a Hotel</a></li>
+                    <li><h3><a id="nav-entry" href="/comment">View Restaurant Customer Comments</a></li>
+                    <li class="active"><h3><a href="/topHotel" id="nav-entry">Find Top Hotels For Foodaholics</a></li>
+                    </ul>
+                </div>
+
+            </section>
+
+        </nav>
+         <div class="container" >
+            <!-- Main component for a primary marketing message or call to action-->
+         <div ng-controller="myController">
+             <p><span class="icon-magnifier" style="width:20%"></span>
+               <span class="g-signin2" data-onsuccess="onSignIn" ></span>
+            </p>
+                 <h2 style="font-size: 20px;color:black;"> Find the Most Populat Restaurants Near a Hotel: </h2>
+						     <div class="input-group" style="margin:auto;width:66%;">
+							        <input id="input1" type="text" class="form-control" name="hotelName2" ng-model="hotelName2" placeholder="Hotel Name">
+							            <span class="input-group-btn">
+								              <button type="submit" class="btn btn-custom-2" onclick="showRests();">Yum!</button>
+							            </span>
+						     </div>
+                 <script>
+                    function showRests() {
+                        document.getElementById('col1_key').innerHTML = "Restaurants";
+                        document.getElementById('col2_key').innerHTML = "Address";
+                        document.getElementById('col3_key').innerHTML = "Popularity Index";
+                        angular.element(document.getElementById('input1')).scope().qTopRests();
+                    }
+                 </script>
+             </p>
+        <table border="0" cellpadding="10" cellspacing="1" width="500" align="center" style="margin-top: 20px">
+            <tr>
+                <td id="col1_key"> </td>
+                <td id="col2_key"><h3> </td>
+                <td id="col3_key"><h3> </td>
+            <tr id="table-entries" ng-repeat="x in data">
+                <td width="33%"> {{x.name}} </td>
+                <td width="33%"> {{x.address}} </td>
+                <td width="33%"> {{x.count}} </td>
+            </tr>
+        </table>
+        </div>
+        <!-- Javascript files -->
+
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.js"></script>
+        <script src="assets/js/jquery.shuffle.min.js"></script>
+        <script src="assets/js/twitterFetcher.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.fitvids.js"></script>
+        <script src="assets/js/jquery.sticky.js"></script>
+        <script src="assets/js/smoothscroll.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+
+        <!-- Custom scripts -->
+        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/custom-shuffle-init.js"></script>
+
+    </body>
+</html>
