@@ -43,15 +43,23 @@ var connection = mysql.createConnection({
 //   }, 10000);
 //   console.log('ended!');
 // });
-
-
+//
+//
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
 });
 
+router.get('/hotel_res', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'hotel_res.html'));
+});
+
 router.get('/comment', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'comment.html'));
+});
+
+router.get('/topHotel', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'topHotel.html'));
 });
 
 router.get('/insert', function(req, res, next) {
@@ -68,9 +76,11 @@ router.get('/data/:hotelName', function(req,res) {
     dbService.nearByRest(hotelName, res);
 });
 
-router.get('/qComment/:name', function(req,res) {
-    var resName = req.params.name;
-    dbService.qComment(resName, res);
+router.post('/qComment/', function(req,res) {
+    var resName = req.body.resName;
+    if(resName != null){
+      dbService.qComment(resName, res);
+    }
 });
 
 /*

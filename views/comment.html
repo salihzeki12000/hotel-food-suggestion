@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="angularjsNodejsTutorial">
     <head>
-        <title>Please enter a person login</title>
+        <title>Eat & Chill</title>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="171822122274-onse4r15fpj0u7r2fqb3rklpop9u2kek.apps.googleusercontent.com">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
@@ -9,57 +9,81 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <!-- Custom styles for this template-->
         <link href="stylesheets/style.css" rel="stylesheet">
+
+        <!-- Font Awesome CSS -->
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
+
+        <!-- Elegant icons CSS -->
+        <link href="assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
+
+        <!-- Magnific-popup lightbox -->
+	      <link href="assets/css/magnific-popup.css" rel="stylesheet">
+
+	      <!-- Owl Carousel -->
+	      <link href="assets/css/owl.theme.css" rel="stylesheet">
+	      <link href="assets/css/owl.carousel.css" rel="stylesheet">
+
+	      <!-- Animate css -->
+	      <link href="assets/css/animate.css" rel="stylesheet">
     </head>
+    <a style="margin-left:12%" href="https://cse.google.com/cse/publicurl?cx=008825110005974707753:qolxxahecme">Search Engine</a>
+    <span href="#" onclick="signOut();" id="sign-out">Sign out</span>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
     <body data-spy="scroll" data-target=".scrollspy">
         <header></header>
         <!-- Static navbar-->
         <nav role="navigation" class="navbar navbar-static-top navbar-default">
             <section class="container">
-                <div id="icon" class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand" id="title">EAT <br/> & <br/> CHILL</a></div>
+                <div href="/" id="icon" class="navbar-header" >
+                  <a href="/" class="navbar-brand" id="title">EAT <br/> & <br/> CHILL</a></div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul>
-                    <li class="active"><a href="/">Find Restaurants Near a Hotel</a></li>
-                    <li><a href="/insert">Check Indencity Index of a Restaurant</a></li>
-                    <li><a href="/reference">Find Attractions Near a Hotel</a></li>
-                    <li><a href="/comment">View Restaurant Customer Comments</a></li>
+                    <li><h3><a id="nav-entry" href="/hotel_res">Find Restaurants Near a Hotel</a></li>
+                    <li><h3><a id="nav-entry" href="#">Check Indencity Index of a Restaurant</a></li>
+                    <li><h3><a id="nav-entry" href="#">Find Attractions Near a Hotel</a></li>
+                    <li class="active"><h3><a id="nav-entry" href="/comment">View Restaurant Customer Comments</a></li>
+                    <li><h3><a href="/topHotel" id=id="nav-entry">Find Top Hotels For Foodaholics</a></li>
                     </ul>
                 </div>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <a href="#" onclick="signOut();" id="sign-out">Sign out</a>
-                <script>
-                    function signOut() {
-                        var auth2 = gapi.auth2.getAuthInstance();
-                        auth2.signOut().then(function () {
-                                             console.log('User signed out.');
-                                             });
-                    }
-                </script>
             </section>
 
         </nav>
          <div class="container">
             <!-- Main component for a primary marketing message or call to action-->
-            <div class="jumbotron">
          <div ng-controller="myController">
-             <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> <br/>
-                 <a id="query"> Find a Restautant's Comments: </a>
-                 <input name="resName" ng-model="resName" value="">
-                 <button id="queryButton" type="button" ng-click="qComment()" class="button">Show Comments</button> <br/>
+             <p><span class="icon-magnifier"></span>
+             <span class="g-signin2" data-onsuccess="onSignIn"></span></p>
+                 <h2 style="font-size: 20px;color:black"> Find a Restautant's Comments: </h2>
+                 <div class="input-group" style="margin:auto;width:66%;">
+							        <input id="input" type="text" class="form-control" name="resName" ng-model="resName" placeholder="Restaurant Name">
+							            <span class="input-group-btn">
+								              <button type="submit" class="btn btn-custom-2" onclick="showComment();">Show Comments</button>
+							            </span>
+						     </div>
+                 <script>
+                    function showComment() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        if (auth2.isSignedIn.get()) {
+                          console.log("logged in");
+                          angular.element(document.getElementById('input')).scope().qComment();
+                        } else {
+                          console.log("not logged in");
+                          alert("Please sign in to view the comments.");
+                        }
+                    }
+                </script>
              </p>
-        <table border="0" cellpadding="10" cellspacing="1" width="500" align="center">
+        <table border="1" cellpadding="10" cellspacing="10" width="80%" align="center" style="margin-top: 30px">
             <tr>
-                <td> Login </td>
-                <td> Name </td>
-                <td> Sex </td>
-                <td> RelationshipStatus </td>
-                <td> Birthyear </td>
-                <td> Number of friends </td>
             <tr ng-repeat="x in data">
-            <td> {{x.nearbyRestaurant}} </td>
-            <td> {{x.address}} </td>
-            <td> {{x.postal_code}} </td>
-            <td> {{x.Name}} </td>
-            <td> {{x.Zip}} </td>
+            <td> {{x.text}} </td>
             </tr>
         </table>
         </div>

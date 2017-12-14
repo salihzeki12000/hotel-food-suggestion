@@ -6,14 +6,14 @@ app.controller('myController', function($scope, $http)
         var request = $http.get('/data/'+$scope.hotelName);
         request.success(function(data)
         {
-            
+
             $scope.data = data;
         });
         request.error(function(data)
         {
             console.log('err');
         });
-    
+
     };
 
     $scope.qCityHotel = function(){
@@ -27,9 +27,24 @@ app.controller('myController', function($scope, $http)
             console.log('err');
         });
     }
-               
+
     $scope.qComment = function(){
-        var request = $http.get('/qComment/'+$scope.resName);
+        var data = {
+               resName: $scope.resName
+        };
+        var request = $http.post('/qComment/', JSON.stringify(data));
+        request.success(function(data)
+        {
+            $scope.data = data;
+        });
+        request.error(function(data)
+        {
+            console.log('err');
+        });
+    }
+
+    $scope.qTopHotels = function(){
+        var request = $http.get('/qCityHighestHotel/'+$scope.cityName2);
         request.success(function(data)
         {
             $scope.data = data;
