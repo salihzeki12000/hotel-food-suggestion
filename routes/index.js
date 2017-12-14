@@ -32,6 +32,10 @@ router.get('/topHotel', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'topHotel.html'));
 });
 
+router.get('/topRest', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'topRest.html'));
+});
+
 router.get('/insert', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'insert.html'));
 });
@@ -57,6 +61,8 @@ router.get('/qCityHotel/:name',function(req,res) {
     var cityName = req.params.name;
     dbService.qCityHotel(cityName, res);
 });
+
+
 
 // ----Your implemention of route handler for "Insert a new record" should go here-----
 
@@ -120,7 +126,7 @@ router.get('/qCityHighestHotel/:city',
         dbService.qCityHighestHotel(cityName, res);
     })
 
-router.get('/qHotelHighestResr/:hotel',
+router.get('/qHotelHighestRest/:hotel',
     function(req,res) {
         var hotelName = req.params.hotel;
         console.log("qCityHighestHotel: " + hotelName);

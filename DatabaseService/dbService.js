@@ -15,7 +15,7 @@ var uri = 'mongodb://CIS550Project:CIS550ProjectPassword@yelpcomments-shard-00-0
 
 
 var nearByRest = function(name, res){
-    var query = 'select distinct r.name as nearbyRestaurant, r.address, r.postal_code from yelp_db.business r, db550.Hotel h where r.postal_code = h.Zip and h.Name = "' + name + '"';
+    var query = 'select distinct r.name as Name, r.address, r.postal_code as Zip from yelp_db.business r, db550.Hotel h where r.postal_code = h.Zip and h.Name = "' + name + '"';
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
         else {
@@ -26,7 +26,7 @@ var nearByRest = function(name, res){
 }
 
 var qCityHotel = function(name, res){
-    var query = 'select h.Name, h.Zip, h.Address from db550.Hotel h where h.City = "' + name + '"';
+    var query = 'select h.Name, h.Zip, h.address from db550.Hotel h where h.City = "' + name + '"';
     console.log("Querying qCity: " + query);
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
@@ -56,7 +56,7 @@ var qCityHighestHotel = function(city, res){
 }
 
 var qHotelHighestRest = function(hotel, res){
-    var query = 'select R.name as name, R.address as address, R.review_count as count\n' +
+    var query = 'select R.name as name, R.address as address, R.review_count/100 as count\n' +
         'from yelp_db.business R, db550.Hotel H\n' +
         'where R.postal_code = H.Zip and H.name = "' + hotel + '"\n' +
         'order by count DESC\n' +
