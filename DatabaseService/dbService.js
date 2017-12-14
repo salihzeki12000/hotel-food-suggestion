@@ -55,6 +55,17 @@ var qCityHighestHotel = function(city, res){
     });
 }
 
+var qHotelHighestRest = function(hotel, res){
+    var query = "";
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qCityHighestHotel result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
 var qComment = function(name, res){
   var id = '';
   var query = 'select r.id from yelp_db.business r where r.name = "' + name + '"';
@@ -103,5 +114,6 @@ module.exports = {
     nearByRest,
     qCityHotel,
     qComment,
-    qCityHighestHotel
+    qCityHighestHotel,
+    qHotelHighestRest
 };
