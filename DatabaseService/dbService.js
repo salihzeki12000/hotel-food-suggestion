@@ -70,6 +70,19 @@ var qHotelHighestRest = function(hotel, res){
     });
 }
 
+var qAttraction = function(hotel, res){
+    var query = 'select h.name as name, a.Description as Description\n' +
+        'from db550.Hotel h, db550.AreaAttractions a\n' +
+        'where h.EANHotelID = a.HotelID and h.Name = "' + hotel +'";'
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qCityHighestHotel result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
 var qComment = function(name, res){
   var id = '';
   var query = 'select r.id from yelp_db.business r where r.name = "' + name + '"';
@@ -119,5 +132,6 @@ module.exports = {
     qCityHotel,
     qComment,
     qCityHighestHotel,
-    qHotelHighestRest
+    qHotelHighestRest,
+    qAttraction
 };

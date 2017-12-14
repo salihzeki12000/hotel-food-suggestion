@@ -133,5 +133,12 @@ router.get('/qHotelHighestRest/:hotel',
         dbService.qHotelHighestRest(hotelName, res);
     })
 
+router.get('/qAttraction/:hotel',
+    function(req,res) {
+        var hotelName = req.params.hotel;
+        console.log("qAttraction: " + hotelName);
+        dbService.qAttraction(hotelName, res);
+    })
+
 
 module.exports = router;
