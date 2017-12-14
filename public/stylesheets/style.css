@@ -38,6 +38,10 @@ table {
   font: small-caps bold 20px/1 sans-serif;
 }
 
+tr {
+    text-align: center;
+}
+
 .g-signin2 {
     float: right;
     margin-right: 0;
@@ -96,6 +100,8 @@ table {
 #table-entries {
   font: italic 1.2em "Fira Sans", serif;
   font-size: 18px;
+  margin: auto;
+  text-align: center;
 }
 
 #hero_entry {
