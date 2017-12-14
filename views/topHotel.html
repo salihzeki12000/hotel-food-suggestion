@@ -82,12 +82,12 @@
         <table border="0" cellpadding="10" cellspacing="1" width="500" align="center" style="margin-top: 20px">
             <tr>
                 <td id="col1_key"> </td>
-                <td id="col2_key"> </td>
-                <td id="col3_key"> </td>
-            <tr ng-repeat="x in data">
-                <td> {{x.name}} </td>
-                <td> {{x.address}} </td>
-                <td> {{x.averageStar}} </td>
+                <td id="col2_key"><h3> </td>
+                <td id="col3_key"><h3> </td>
+            <tr id="table-entries" ng-repeat="x in data">
+                <td width="33%"> {{x.name}} </td>
+                <td width="33%"> {{x.address}} </td>
+                <td width="33%"> {{x.averageStar}} </td>
             </tr>
         </table>
         </div>

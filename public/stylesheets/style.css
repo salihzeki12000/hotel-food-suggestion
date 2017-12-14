@@ -34,6 +34,10 @@ input {
   margin-right: 5px;
 }
 
+table {
+  font: small-caps bold 20px/1 sans-serif;
+}
+
 .g-signin2 {
     float: right;
     margin-right: 0;
@@ -87,6 +91,11 @@ input {
 .jumbotron {
   margin-left: auto;
   margin-right: auto;
+}
+
+#table-entries {
+  font: italic 1.2em "Fira Sans", serif;
+  font-size: 18px;
 }
 
 #hero_entry {
