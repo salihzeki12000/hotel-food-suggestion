@@ -15,36 +15,6 @@ var connection = mysql.createConnection({
   port: '3306'
 });
 
-// MongoClient.connect(uri, function(err, db) {
-//   // console.log(db);
-//
-//   var ndb = db.db('test');
-//   console.log('connedted!');
-//   var pro = ndb.collection('comments').find({business_id:"uYHaNptLzDLoV_JZ_MuzUA"});
-//   //ndb.collection('comments').find({business_id:id}).toArray(function(err, res){
-//
-//   // });
-//   // var temp = pro.next();
-//   setTimeout( () => {
-//     console.log('Printing results: ');
-//     // // console.log(result);
-//     // pro.forEach(function(val){
-//     //   cmts.push(val);
-//     //   console.log(val);
-//     // });
-//     pro.toArray(function(err, result){
-//       if (err) throw err;
-//       console.log(result);
-//     });
-//
-//     console.log('Ending');
-//     // console.log(typeof(temp));
-//     // res.json(temp);
-//   }, 10000);
-//   console.log('ended!');
-// });
-//
-//
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
@@ -82,24 +52,6 @@ router.post('/qComment/', function(req,res) {
       dbService.qComment(resName, res);
     }
 });
-
-/*
-router.get('/data/', function(req, res)
-{
-    var query2 = 'SELECT p.*, COUNT(f.friend) as num ' +
-        'FROM Person p LEFT JOIN Friends f ' +
-        'ON p.login = f.login ';
-    query2 = query2 + ' GROUP BY p.login';
-
-    console.log(query2);
-    connection.query(query2, function(err, rows, fields) {
-        if (err) console.log(err);
-        else {
-            res.json(rows);
-        }
-    });
-});
- */
 
 router.get('/qCityHotel/:name',function(req,res) {
     var cityName = req.params.name;
@@ -166,6 +118,13 @@ router.get('/qCityHighestHotel/:city',
         var cityName = req.params.city;
         console.log("qCityHighestHotel: " + cityName);
         dbService.qCityHighestHotel(cityName, res);
+    })
+
+router.get('/qHotelHighestResr/:hotel',
+    function(req,res) {
+        var hotelName = req.params.hotel;
+        console.log("qCityHighestHotel: " + hotelName);
+        dbService.qHotelHighestRest(hotelName, res);
     })
 
 

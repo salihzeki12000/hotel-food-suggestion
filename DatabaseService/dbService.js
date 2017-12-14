@@ -55,6 +55,21 @@ var qCityHighestHotel = function(city, res){
     });
 }
 
+var qHotelHighestRest = function(hotel, res){
+    var query = 'select R.name as name, R.address as address, R.review_count as count\n' +
+        'from yelp_db.business R, db550.Hotel H\n' +
+        'where R.postal_code = H.Zip and H.name = "' + hotel + '"\n' +
+        'order by count DESC\n' +
+        'limit 10;';
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qCityHighestHotel result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
 var qComment = function(name, res){
   var id = '';
   var query = 'select r.id from yelp_db.business r where r.name = "' + name + '"';
@@ -103,5 +118,6 @@ module.exports = {
     nearByRest,
     qCityHotel,
     qComment,
-    qCityHighestHotel
+    qCityHighestHotel,
+    qHotelHighestRest
 };
