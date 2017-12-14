@@ -58,6 +58,10 @@ router.get('/comment', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'comment.html'));
 });
 
+router.get('/topHotel', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'topHotel.html'));
+});
+
 router.get('/insert', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'insert.html'));
 });

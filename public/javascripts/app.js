@@ -42,6 +42,18 @@ app.controller('myController', function($scope, $http)
             console.log('err');
         });
     }
+
+    $scope.qTopHotels = function(){
+        var request = $http.get('/qCityHighestHotel/'+$scope.cityName2);
+        request.success(function(data)
+        {
+            $scope.data = data;
+        });
+        request.error(function(data)
+        {
+            console.log('err');
+        });
+    }
 });
 
 // To implement "Insert a new record", you need to:
