@@ -158,7 +158,7 @@ var qComment = function(name, res){
 
     var ndb = db.db('test');
     console.log('connedted!');
-    var pro = ndb.collection('comments').find({business_id:id});
+    var pro = ndb.collection('comments').find({business_id:id}).limit(100);
     //ndb.collection('comments').find({business_id:id}).toArray(function(err, res){
 
     // });
@@ -176,7 +176,7 @@ var qComment = function(name, res){
         res.json(result);
       });
       // res.json(temp);
-    }, 1000);
+    }, 100);
     console.log('ended!');
   });
 }
