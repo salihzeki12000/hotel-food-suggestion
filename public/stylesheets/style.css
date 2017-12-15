@@ -36,6 +36,7 @@ input {
 
 table {
   font: small-caps bold 20px/1 sans-serif;
+  margin-bottom: 200px;
 }
 
 tr {
@@ -202,6 +203,8 @@ body {
 	color: #666;
 	overflow-x: hidden;
   padding: 0px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 img {

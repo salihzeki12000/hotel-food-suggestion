@@ -85,10 +85,13 @@ var qAttraction = function(hotel, res){
     });
 }
 
+
 var qZipHotel = function(zip, res){
-    var query = 'select *\n' +
-        'from db550.Hotel h\n' +
-        'where h.Zip = "'+zip+'"';
+    var query = 'select h.Name as name, h.Address as address, s.StarRating as rate\n' +
+        'from db550.Hotel h, db550.Star s\n' +
+        'where h.Zip = "'+zip+'" and h.EANHotelID = s.HotelID\n' +
+        'order by rate DESC\n' +
+        'limit 10;';
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
         else {
@@ -99,9 +102,11 @@ var qZipHotel = function(zip, res){
 }
 
 var qZipRest = function(zip, res){
-    var query = 'select *\n' +
+    var query = 'select r.name as name, r.address as address, r.stars as rate\n' +
         'from yelp_db.business r\n' +
-        'where r.postal_code = "'+zip+'"';
+        'where r.postal_code = "'+zip+'"\n' +
+        'order by rate DESC\n' +
+        'limit 10;';
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
         else {
@@ -112,7 +117,7 @@ var qZipRest = function(zip, res){
 }
 
 var qCityBestZip = function(city, res){
-    var query = 'select rr.rzip as zipcode, TRUNCATE((rr.rstar + hr.hstar),2) as BusyIndex\n' +
+    var query = 'select rr.rzip as zipcode, TRUNCATE((rr.rstar + hr.hstar),2) as rate\n' +
         'from (select r.postal_code as rzip, avg(r.stars) as rstar\n' +
         'from yelp_db.business r\n' +
         'group by r.postal_code) as rr,\n' +
@@ -122,7 +127,7 @@ var qCityBestZip = function(city, res){
         '  group by h.Zip\n' +
         ') as hr\n' +
         'where rr.rzip = hr.hzip\n' +
-        'order by BusyIndex DESC\n' +
+        'order by rate DESC\n' +
         'limit 10;';
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);

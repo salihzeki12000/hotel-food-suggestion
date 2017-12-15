@@ -29,7 +29,7 @@
 
     </head>
     <a style="margin-left:12%" href="https://cse.google.com/cse/publicurl?cx=008825110005974707753:qolxxahecme">Search Engine</a>
-    <span href="#" onclick="signOut();" id="sign-out" >Sign out</span>
+    <a href="#" onclick="signOut();" id="sign-out" >Sign out</a>
     <script>
         function signOut() {
             var auth2 = gapi.auth2.getAuthInstance();
@@ -48,7 +48,7 @@
                     <ul>
                     <li><h3><a id="nav-entry" href="/hotel_res">Find Restaurants Near a Hotel</a></li>
                     <li><h3><a id="nav-entry" href="/topRest">Find the Most Popular Restaurants Near a Hotel</a></li>
-                    <li class="active"><h3><a id="nav-entry" href="/topZip">Find the Top Rated Area</a></li>
+                    <li class="active"><h3><a id="nav-entry" href="/topZip">Find Top Rated Areas</a></li>
                     <li><h3><a id="nav-entry" href="/attraction">Find Attractions Near a Hotel</a></li>
                     <li><h3><a id="nav-entry" href="/comment">View Restaurant Customer Comments</a></li>
                     <li><h3><a id="nav-entry" href="/topHotel">Find Top Hotels For Foodaholics</a></li>
@@ -64,7 +64,7 @@
              <p><span class="icon-magnifier" style="width:20%"></span>
                <span class="g-signin2" data-onsuccess="onSignIn" ></span>
             </p>
-                 <h2 style="font-size: 20px;color:black;"> Find the Top Rated Area: </h2>
+                 <h2 style="font-size: 20px; color:black;"> Find the Top Rated Area: </h2>
 						     <div class="input-group" style="margin:auto;width:66%;">
 							        <input id="input1" type="text" class="form-control" name="citylName3" ng-model="cityName3" placeholder="City Name">
 							            <span class="input-group-btn">
@@ -73,19 +73,72 @@
 						     </div>
                  <script>
                     function showZip() {
+                        var auth2 = gapi.auth2.getAuthInstance();
                         document.getElementById('col1_key').innerHTML = "Zip";
-                        document.getElementById('col2_key').innerHTML = "Rate";
+                        document.getElementById('col2_key').innerHTML = "";
+                        document.getElementById('col3_key').innerHTML = "Rate";
+                        document.getElementById('col4_key').innerHTML = "";
                         angular.element(document.getElementById('input1')).scope().qTopZip();
                     }
                  </script>
+                 <h2 style="margin-top: 32px; font-size: 20px; color:black;"> Find the Top Restaurants In This Area: </h2>
+						     <div class="input-group" style="margin:auto;width:66%;">
+							        <input id="input2" type="text" class="form-control" name="zip" ng-model="zip" placeholder="Zip">
+							            <span class="input-group-btn">
+								              <button type="submit" class="btn btn-primary" onclick="showRes();">Find the Tops</button>
+							            </span>
+						     </div>
+                 <script>
+                    function showRes() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        if (auth2.isSignedIn.get()) {
+                            console.log("logged in");
+                            document.getElementById('col1_key').innerHTML = "";
+                            document.getElementById('col2_key').innerHTML = "Restaurant";
+                            document.getElementById('col3_key').innerHTML = "Rate";
+                            document.getElementById('col4_key').innerHTML = "Address";
+                            angular.element(document.getElementById('input2')).scope().qHotel();
+                          } else {
+                            console.log("not logged in");
+                            alert("Please sign in to view the comments.");
+                        }
+                    }
+                 </script>
+                 <h2 style="margin-top: 32px; font-size: 20px; color:black;"> Find the Top Hotels In This Area: </h2>
+						     <div class="input-group" style="margin:auto;width:66%;">
+							        <input id="input3" type="text" class="form-control" name="zip" ng-model="zip" placeholder="Zip">
+							            <span class="input-group-btn">
+								              <button type="submit" class="btn btn-primary" onclick="showHotel();">Find the Tops</button>
+							            </span>
+						     </div>
+                 <script>
+                    function showHotel() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        if (auth2.isSignedIn.get()) {
+                            console.log("logged in");
+                            document.getElementById('col1_key').innerHTML = "";
+                            document.getElementById('col2_key').innerHTML = "Hotel";
+                            document.getElementById('col3_key').innerHTML = "Rate";
+                            document.getElementById('col4_key').innerHTML = "Address";
+                            angular.element(document.getElementById('input3')).scope().qHotel();
+                        } else {
+                          console.log("not logged in");
+                          alert("Please sign in to view the comments.");
+                        }
+                    }
+                 </script>
              </p>
-        <table border="0" cellpadding="10" cellspacing="1" width="50%" align="center" style="margin-top: 20px">
+        <table border="0" cellpadding="10" cellspacing="1" width="70%" align="center" style="margin-top: 20px">
             <tr>
                 <td id="col1_key"> </td>
-                <td id="col2_key"><h3> </td>
+                <td id="col2_key"> </td>
+                <td id="col3_key"> </td>
+                <td id="col4_key"> </td>
             <tr id="table-entries" ng-repeat="x in data">
-                <td width="40%"> {{x.zipcode}} </td>
-                <td width="40%"> {{x.BusyIndex}} </td>
+                <td > {{x.zipcode}} </td>
+                <td > {{x.name}} </td>
+                <td > {{x.rate}} </td>
+                <td > {{x.address}} </td>
             </tr>
         </table>
         </div>

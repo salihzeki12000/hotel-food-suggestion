@@ -90,6 +90,30 @@ app.controller('myController', function($scope, $http)
             console.log('err');
         });
     }
+
+    $scope.qRes = function(){
+        var request = $http.get('/qZipRest/'+$scope.zip);
+        request.success(function(data)
+        {
+            $scope.data = data;
+        });
+        request.error(function(data)
+        {
+            console.log('err');
+        });
+    }
+
+    $scope.qHotel = function(){
+        var request = $http.get('/qZipHotel/'+$scope.zip);
+        request.success(function(data)
+        {
+            $scope.data = data;
+        });
+        request.error(function(data)
+        {
+            console.log('err');
+        });
+    }
 });
 
 // To implement "Insert a new record", you need to:
