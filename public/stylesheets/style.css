@@ -182,7 +182,7 @@ tr {
 }
 #navbar {
     float: left;
-    margin-top: 20px;
+    margin-top: 14px;
     margin-left: auto;
     display: inline-block;
 }
@@ -203,8 +203,6 @@ body {
 	color: #666;
 	overflow-x: hidden;
   padding: 0px;
-  margin-bottom: 50px;
-  padding-bottom: 50px;
 }
 
 img {
@@ -432,7 +430,7 @@ h6 {
 .form-control {
 	background: #FFF;
 	border: 2px solid #D8E1E4;
-	font-size: 12px;
+	font-size: 14px;
 	padding: 0 15px;
 }
 
@@ -677,7 +675,8 @@ textarea.form-control {
 		-ms-transform: translate(0%, -50%);
 		 -o-transform: translate(0%, -50%);
 			transform: translate(0%, -50%);
-	padding: 0 15px;
+	padding: 15px 15px;
+  margin-top: 15px;
 }
 
 .hello,

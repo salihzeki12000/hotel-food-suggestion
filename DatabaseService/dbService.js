@@ -176,7 +176,7 @@ var qComment = function(name, res){
         res.json(result);
       });
       // res.json(temp);
-    }, 10000);
+    }, 1000);
     console.log('ended!');
   });
 }
