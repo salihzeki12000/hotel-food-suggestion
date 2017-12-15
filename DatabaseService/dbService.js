@@ -120,12 +120,13 @@ var qCityBestZip = function(city, res){
     var query = 'select rr.rzip as zipcode, TRUNCATE((rr.rstar + hr.hstar),2) as rate\n' +
         'from (select r.postal_code as rzip, avg(r.stars) as rstar\n' +
         'from yelp_db.business r\n' +
-        'group by r.postal_code) as rr,\n' +
+        'group by r.postal_code\n' +
+        'having count(*) >= 5) as rr,\n' +
         '(select h.Zip as hzip, avg(s.StarRating) as hstar\n' +
         '  from db550.Hotel h, db550.Star s\n' +
         '  where h.EANHotelID = s.HotelID and h.City = "' + city + '"\n' +
         '  group by h.Zip\n' +
-        ') as hr\n' +
+        '  having count(*) >= 3) as hr\n' +
         'where rr.rzip = hr.hzip\n' +
         'order by rate DESC\n' +
         'limit 10;';
