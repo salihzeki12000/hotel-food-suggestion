@@ -78,6 +78,18 @@ app.controller('myController', function($scope, $http)
             console.log('err');
         });
     }
+
+    $scope.qTopZip = function(){
+        var request = $http.get('/qCityBestZip/'+$scope.cityName3);
+        request.success(function(data)
+        {
+            $scope.data = data;
+        });
+        request.error(function(data)
+        {
+            console.log('err');
+        });
+    }
 });
 
 // To implement "Insert a new record", you need to:

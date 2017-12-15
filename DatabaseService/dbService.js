@@ -112,7 +112,7 @@ var qZipRest = function(zip, res){
 }
 
 var qCityBestZip = function(city, res){
-    var query = 'select rr.rzip as zipcode, (rr.rstar + hr.hstar) as BusyIndex\n' +
+    var query = 'select rr.rzip as zipcode, TRUNCATE((rr.rstar + hr.hstar),2) as BusyIndex\n' +
         'from (select r.postal_code as rzip, avg(r.stars) as rstar\n' +
         'from yelp_db.business r\n' +
         'group by r.postal_code) as rr,\n' +
@@ -122,7 +122,8 @@ var qCityBestZip = function(city, res){
         '  group by h.Zip\n' +
         ') as hr\n' +
         'where rr.rzip = hr.hzip\n' +
-        'order by BusyIndex DESC';
+        'order by BusyIndex DESC\n' +
+        'limit 10;';
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
         else {
