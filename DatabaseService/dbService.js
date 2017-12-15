@@ -37,6 +37,8 @@ var qCityHotel = function(name, res){
     });
 }
 
+
+
 var qCityHighestHotel = function(city, res){
     var query = 'Select H2.name as name, H2.Address as address, convert(averageStar, DECIMAL(5,2)) as averageStar\n' +
         'From (Select H.EANHotelID, H.Address, H.name, R.id, avg(R.stars) as averageStar\n' +
@@ -64,7 +66,7 @@ var qHotelHighestRest = function(hotel, res){
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
         else {
-            console.log("qCityHighestHotel result:" + rows);
+            console.log("qHotelHighestRest result:" + rows);
             res.json(rows);
         }
     });
@@ -77,7 +79,54 @@ var qAttraction = function(hotel, res){
     connection.query(query, function(err, rows, fields) {
         if (err) console.log(err);
         else {
-            console.log("qCityHighestHotel result:" + rows);
+            console.log("qAttraction result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
+var qZipHotel = function(zip, res){
+    var query = 'select *\n' +
+        'from db550.Hotel h\n' +
+        'where h.Zip = "'+zip+'"';
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qZipHotel result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
+var qZipRest = function(zip, res){
+    var query = 'select *\n' +
+        'from yelp_db.business r\n' +
+        'where r.postal_code = "'+zip+'"';
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qZipHotel result:" + rows);
+            res.json(rows);
+        }
+    });
+}
+
+var qCityBestZip = function(city, res){
+    var query = 'select rr.rzip as zipcode, (rr.rstar + hr.hstar) as BusyIndex\n' +
+        'from (select r.postal_code as rzip, avg(r.stars) as rstar\n' +
+        'from yelp_db.business r\n' +
+        'group by r.postal_code) as rr,\n' +
+        '(select h.Zip as hzip, avg(s.StarRating) as hstar\n' +
+        '  from db550.Hotel h, db550.Star s\n' +
+        '  where h.EANHotelID = s.HotelID and h.City = "' + city + '"\n' +
+        '  group by h.Zip\n' +
+        ') as hr\n' +
+        'where rr.rzip = hr.hzip\n' +
+        'order by BusyIndex DESC';
+    connection.query(query, function(err, rows, fields) {
+        if (err) console.log(err);
+        else {
+            console.log("qCityBestZip result:" + rows);
             res.json(rows);
         }
     });
@@ -133,5 +182,8 @@ module.exports = {
     qComment,
     qCityHighestHotel,
     qHotelHighestRest,
-    qAttraction
+    qAttraction,
+    qZipHotel,
+    qZipRest,
+    qCityBestZip
 };
