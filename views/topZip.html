@@ -48,10 +48,10 @@
                     <ul>
                     <li><h3><a id="nav-entry" href="/hotel_res">Find Restaurants Near a Hotel</a></li>
                     <li><h3><a id="nav-entry" href="/topRest">Find the Most Popular Restaurants Near a Hotel</a></li>
-                    <li><h3><a id="nav-entry" href="/topZip">Find the Highest Rated Area</a></li>
+                    <li class="active"><h3><a id="nav-entry" href="/topZip">Find the Highest Rated Area</a></li>
                     <li><h3><a id="nav-entry" href="/attraction">Find Attractions Near a Hotel</a></li>
                     <li><h3><a id="nav-entry" href="/comment">View Restaurant Customer Comments</a></li>
-                    <li class="active"><h3><a href="/topHotel" id="nav-entry">Find Top Hotels For Foodaholics</a></li>
+                    <li><h3><a id="nav-entry" href="/topHotel">Find Top Hotels For Foodaholics</a></li>
                     </ul>
                 </div>
 
@@ -64,28 +64,31 @@
              <p><span class="icon-magnifier" style="width:20%"></span>
                <span class="g-signin2" data-onsuccess="onSignIn" ></span>
             </p>
-                 <h2 style="font-size: 20px;color:black;"> Where to have fun? </h2>
+                 <h2 style="font-size: 20px;color:black;"> Find the Most Populat Restaurants Near a Hotel: </h2>
 						     <div class="input-group" style="margin:auto;width:66%;">
-							        <input id="input1" type="text" class="form-control" name="hotelName3" ng-model="hotelName3" placeholder="Hotel Name">
+							        <input id="input1" type="text" class="form-control" name="hotelName2" ng-model="hotelName2" placeholder="Hotel Name">
 							            <span class="input-group-btn">
-								              <button type="submit" class="btn btn-custom-2" onclick="showAttractions();">Check It Out</button>
+								              <button type="submit" class="btn btn-custom-2" onclick="showRests();">Yum!</button>
 							            </span>
 						     </div>
                  <script>
-                    function showAttractions() {
-                        document.getElementById('col1_key').innerHTML = "Hotel";
-                        document.getElementById('col2_key').innerHTML = "Attractions";
-                        angular.element(document.getElementById('input1')).scope().qAttractions();
+                    function showRests() {
+                        document.getElementById('col1_key').innerHTML = "Restaurants";
+                        document.getElementById('col2_key').innerHTML = "Address";
+                        document.getElementById('col3_key').innerHTML = "Popularity Index";
+                        angular.element(document.getElementById('input1')).scope().qTopRests();
                     }
                  </script>
              </p>
         <table border="0" cellpadding="10" cellspacing="1" width="70%" align="center" style="margin-top: 20px">
             <tr>
-                <td width="33%" id="col1_key"> </td>
-                <td width="66%" id="col2_key"> </td>
+                <td id="col1_key"> </td>
+                <td id="col2_key"><h3> </td>
+                <td id="col3_key"><h3> </td>
             <tr id="table-entries" ng-repeat="x in data">
                 <td width="33%"> {{x.name}} </td>
-                <td width="66%"> {{x.Description}} </td>
+                <td width="33%"> {{x.address}} </td>
+                <td width="33%"> {{x.count}} </td>
             </tr>
         </table>
         </div>

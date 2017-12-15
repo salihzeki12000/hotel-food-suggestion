@@ -36,6 +36,14 @@ router.get('/topRest', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'topRest.html'));
 });
 
+router.get('/topZip', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'topZip.html'));
+});
+
+router.get('/attraction', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'attraction.html'));
+});
+
 router.get('/insert', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'insert.html'));
 });
